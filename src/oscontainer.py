@@ -166,6 +166,8 @@ def oscontainer_build(containers_storage, src, ref, image_name_and_tag,
         skopeoCmd = ['skopeo', 'inspect']
         if authfile != "":
             skopeoCmd.append("--authfile={}".format(authfile))
+        if cert_dir != "":
+            skopeoCmd.append("--cert-dir={}".format(cert_dir))
 
         skopeoCmd.append("docker://" + image_name_and_tag)
         inspect = run_get_json(skopeoCmd)
